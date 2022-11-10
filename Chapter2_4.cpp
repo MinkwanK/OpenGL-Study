@@ -8,17 +8,17 @@ void processInput(GLFWwindow* window);
 
 int main()
 {
-    //glfw ÃÊ±âÈ­
+    //glfw ì´ˆê¸°í™”
     glfwInit();
     
-    //Ã¹¹øÂ° ¿É¼ÇÀº ¹«½¼ ±â´É ¿É¼Ç ¾µ °ÍÀÎÁö, µÎ¹øÂ° ÀÎ¼ö´Â ¹öÀü
+    //ì²«ë²ˆì§¸ ì˜µì…˜ì€ ë¬´ìŠ¨ ê¸°ëŠ¥ ì˜µì…˜ ì“¸ ê²ƒì¸ì§€, ë‘ë²ˆì§¸ ì¸ìˆ˜ëŠ” ë²„ì „
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     
-    //Immediate Mode(easy)³ª Core_Profile(more flexible,hard) µÑ Áß ¹» ¾µÁö
+    //Immediate Mode(easy)ë‚˜ Core_Profile(more flexible,hard) ë‘˜ ì¤‘ ë­˜ ì“¸ì§€
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
-    //Ã¹ NULLÀº ÀüÃ¼È­¸é ÇÒÁö ¾ÈÇÒÁö, ¾È¿¡ ³»¿ëÀ» ´Ù¸¥ °Í°ú °øÀ¯ÇÒ°Å³Ä
+    //ì²« NULLì€ ì „ì²´í™”ë©´ í• ì§€ ì•ˆí• ì§€, ì•ˆì— ë‚´ìš©ì„ ë‹¤ë¥¸ ê²ƒê³¼ ê³µìœ í• ê±°ëƒ
     GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
 
     if (window == NULL)
@@ -27,22 +27,22 @@ int main()
         glfwTerminate();
         return -1;
     }
-    //Context¿¡ window¸¦ main context·Î ¾²°Ú´Ù.
+    //Contextì— windowë¥¼ main contextë¡œ ì“°ê² ë‹¤.
     glfwMakeContextCurrent(window);
 
-    //GLADÃÊ±âÈ­ , glfwGetProcAddress: os º°·Î ÇÔ¼ö Æ÷ÀÎÅÍÀÇ ÁÖ¼Ò¸¦ ¹İÈ¯. 
+    //GLADì´ˆê¸°í™” , glfwGetProcAddress: os ë³„ë¡œ í•¨ìˆ˜ í¬ì¸í„°ì˜ ì£¼ì†Œë¥¼ ë°˜í™˜. 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
 
-    //·»´õ¸µ ÇÒ È­¸é »çÀÌÁî°¡ ¹Ù²ğ¶§¸¶´Ù È£ÃâµÈ´Ù.
+    //ë Œë”ë§ í•  í™”ë©´ ì‚¬ì´ì¦ˆê°€ ë°”ë€”ë•Œë§ˆë‹¤ í˜¸ì¶œëœë‹¤.
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); 
 
     while (!glfwWindowShouldClose(window))
     {
-        //window¸¦ ÅëÇØ ÀÔ·ÂÀ» ¹Ş°Ú´Ù.
+        //windowë¥¼ í†µí•´ ì…ë ¥ì„ ë°›ê² ë‹¤.
         processInput(window);
 
      
@@ -50,23 +50,23 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //ÄÃ·¯ ¹öÆÛ°¡ µÎ°³ÀÖ´Ù. ÇÏ³ª´Â È­¸é¿¡ ³ªÅ¸³»°í ÇÏ³ª´Â µÚ¿¡¼­ ¼öÁ¤.
+        //ì»¬ëŸ¬ ë²„í¼ê°€ ë‘ê°œìˆë‹¤. í•˜ë‚˜ëŠ” í™”ë©´ì— ë‚˜íƒ€ë‚´ê³  í•˜ë‚˜ëŠ” ë’¤ì—ì„œ ìˆ˜ì •.
         glfwSwapBuffers(window);
 
-        //¾î¶² ÀÌº¥Æ®°¡ ½ÇÇà µÆ´ÂÁö È®ÀÎÇÑ´Ù.
+        //ì–´ë–¤ ì´ë²¤íŠ¸ê°€ ì‹¤í–‰ ëëŠ”ì§€ í™•ì¸í•œë‹¤.
         glfwPollEvents();
 
     }
 
-    //ÇÒ´çµÈ ÀÚ¿ø Á¦°Å
+    //í• ë‹¹ëœ ìì› ì œê±°
     glfwTerminate();
     return 0;
 }
 
-//·»´õ¸µ ÇÒ »çÀÌÁî, È­¸é Å©±â°¡ ¹Ù²ğ¶§¸¶´Ù È£ÃâµÈ´Ù.
+//ë Œë”ë§ í•  ì‚¬ì´ì¦ˆ, í™”ë©´ í¬ê¸°ê°€ ë°”ë€”ë•Œë§ˆë‹¤ í˜¸ì¶œëœë‹¤.
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    //Ã³À½ µÎ¹øÂ° ¸Å°³º¯¼ö´Â ¿ŞÂÊ ¸ğ¼­¸®¿¡¼­ÀÇ Ã¢ À§Ä¡
+    //ì²˜ìŒ ë‘ë²ˆì§¸ ë§¤ê°œë³€ìˆ˜ëŠ” ì™¼ìª½ ëª¨ì„œë¦¬ì—ì„œì˜ ì°½ ìœ„ì¹˜
     glViewport(0, 0, width, height);
 }
 
@@ -75,36 +75,4 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
-/*
-void render(GLFWwindow* window);
 
-int main()
-{
-    // glfw ÃÊ±âÈ­
-    glfwInit();
-
-    // window ¸¸µé±â (width, height, title, monitor, share)
-    GLFWwindow* window = glfwCreateWindow(640, 480, "Inyong", 0, 0);
-
-    // context´Â ±×¸®±â À§ÇÑ ³»¿ëÀ» ´ã°í ÀÖÀ½
-    // window°¡ µÎ°³ÀÌ¸é context°¡ µÎ°³ÀÏ¼öµµ ÀÖÀ½
-    // ±×·¯¸é ¾î¶² context·Î ±×¸±Áö Á¤ÇØÁà¾ß ÇÔ
-    glfwMakeContextCurrent(window);
-
-    // »ç¿ëÀÚ°¡ window Ã¢À» ´İÀ» ¶§±îÁö
-    while (!glfwWindowShouldClose(window)) {
-        // window ±×·ÁÁÖ±â
-        render(window);
-
-        // ¸¶¿ì½º ¿òÁ÷ÀÌ´Â °Í. ÀÌ·±°Íµé µé°í¿Í¼­ ÇÊ¿äÇÑ windowÇÑÅ× º¸³»ÁÖ±â
-        glfwPollEvents();
-    }
-
-    // window°¡ ´İÇûÀ» °æ¿ì ³¡³»ÀÚ
-    glfwDestroyWindow(window);
-    glfwTerminate();
-}
-
-void render(GLFWwindow* window) { }
-
-*/
