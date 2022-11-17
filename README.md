@@ -1,4 +1,4 @@
 # OpenGL-Study
-OpenGL Study in Donga Univ
+OpenGL Study by referring LearnOpenGL
 
-I am studying OpenGL through a Computer Graphics Lab Program.
+https://learnopengl.com/
